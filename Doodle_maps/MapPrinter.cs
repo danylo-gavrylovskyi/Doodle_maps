@@ -21,6 +21,13 @@ namespace Kse.Algorithms.Samples
                     {
                         Console.Write("A");
                     }
+                    else if(goal.Equals(new Point(row: row, column: column)))
+                    {
+                        Console.Write("B");
+                    }else if(path.Contains(new Point(row: row, column: column)))
+                    {
+                        Console.Write(".");
+                    }
                     else
                     {
                         Console.Write(maze[column, row]);
