@@ -1,0 +1,15 @@
+C:\Meine\C#\Doodle_maps\Doodle_maps\bin\Debug\net6.0\Doodle_maps.exe
+C:\Meine\C#\Doodle_maps\Doodle_maps\bin\Debug\net6.0\Doodle_maps.deps.json
+C:\Meine\C#\Doodle_maps\Doodle_maps\bin\Debug\net6.0\Doodle_maps.runtimeconfig.json
+C:\Meine\C#\Doodle_maps\Doodle_maps\bin\Debug\net6.0\Doodle_maps.dll
+C:\Meine\C#\Doodle_maps\Doodle_maps\bin\Debug\net6.0\Doodle_maps.pdb
+C:\Meine\C#\Doodle_maps\Doodle_maps\obj\Debug\net6.0\Doodle_maps.csproj.AssemblyReference.cache
+C:\Meine\C#\Doodle_maps\Doodle_maps\obj\Debug\net6.0\Doodle_maps.GeneratedMSBuildEditorConfig.editorconfig
+C:\Meine\C#\Doodle_maps\Doodle_maps\obj\Debug\net6.0\Doodle_maps.AssemblyInfoInputs.cache
+C:\Meine\C#\Doodle_maps\Doodle_maps\obj\Debug\net6.0\Doodle_maps.AssemblyInfo.cs
+C:\Meine\C#\Doodle_maps\Doodle_maps\obj\Debug\net6.0\Doodle_maps.csproj.CoreCompileInputs.cache
+C:\Meine\C#\Doodle_maps\Doodle_maps\obj\Debug\net6.0\Doodle_maps.dll
+C:\Meine\C#\Doodle_maps\Doodle_maps\obj\Debug\net6.0\refint\Doodle_maps.dll
+C:\Meine\C#\Doodle_maps\Doodle_maps\obj\Debug\net6.0\Doodle_maps.pdb
+C:\Meine\C#\Doodle_maps\Doodle_maps\obj\Debug\net6.0\Doodle_maps.genruntimeconfig.cache
+C:\Meine\C#\Doodle_maps\Doodle_maps\obj\Debug\net6.0\ref\Doodle_maps.dll
