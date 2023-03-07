@@ -27,12 +27,12 @@ List<Point> GetShortestPath(string[,] map, Point start, Point goal)
     return result;
 }
 
-void BFS(Point point)
+void BFS(Point start)
 {
     var visited = new List<Point>();
     var queue = new Queue<Point>();
-    Visit(point);
-    queue.Enqueue(point);
+    queue.Enqueue(start);
+    Visit(start);
     while (queue.Count > 0)
     {
         var next = queue.Dequeue();
@@ -51,5 +51,25 @@ void BFS(Point point)
     {
         map[point.Row, point.Column] = "1";
         visited.Add(point);
+    }
+}
+
+List<Point> GetNeighbours(int row, int column, string[,] maze)
+{
+    var result = new List<Point>();
+    TryAddWithOffset(1, 0);
+    TryAddWithOffset(-1, 0);
+    TryAddWithOffset(0, 1);
+    TryAddWithOffset(0, -1);
+    return result;
+
+    void TryAddWithOffset(int offsetRow, int offsetColumn)
+    {
+        var newX = row + offsetRow;
+        var newY = column + offsetColumn;
+        if (newX >= 0 && newY >= 0 && newX < maze.GetLength(0) && newY < maze.GetLength(1) && maze[newX, newY] != "#")
+        {
+            result.Add(new Point(newY, newX));
+        }
     }
 }
