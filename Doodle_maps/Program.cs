@@ -44,6 +44,11 @@ new MapPrinter().Print(map, new List<Point>(), start, start);
 List<Point> path = BFS(start, goal);
 new MapPrinter().Print(map, path, start, goal);
 
+int Heuristic(Point current, Point goal)
+{
+    return Math.Abs(current.Row - goal.Row) + (current.Column - goal.Column);
+}
+
 List<Point> BFS(Point start, Point goal)
 {
     Dictionary<Point, Point> origins = new Dictionary<Point, Point>();
@@ -63,7 +68,7 @@ List<Point> BFS(Point start, Point goal)
                 int num;
                 int.TryParse(map[neighbour.Column, neighbour.Row], out num);
                 origins.Add(neighbour, next);
-                queue.Enqueue(neighbour, priority + num);
+                queue.Enqueue(neighbour, priority + num + Heuristic(neighbour, goal));
                 time += 1 / (60 - (num - 1) * 6f);
             }
         }
@@ -80,7 +85,7 @@ List<Point> BFS(Point start, Point goal)
 
     path.Add(start);
     path.Reverse();
-    Console.WriteLine(time);
+    Console.WriteLine($"\nRoad time - {time}\n");
     return path;
 }
 
@@ -138,30 +143,3 @@ List<Point> GetNeighbours(int row, int column, string[,] maze)
         }
     }
 }
-
-//List<Point> GetNeighbours(string[,] map, Point p)
-//{
-//    List<Point> result = new List<Point>();
-
-//    int px = p.Column;
-//    int py = p.Row;
-
-//    if (py + 1 < map.GetLength(1) && py + 1 >= 0 && px < map.GetLength(0) && px >= 0 && map[px, py + 1] != "█")
-//    {
-//        result.Add(new Point(px, py + 1));
-//    }
-//    if (py - 1 < map.GetLength(1) && py - 1 >= 0 && px < map.GetLength(0) && px >= 0 && map[px, py - 1] != "█")
-//    {
-//        result.Add(new Point(px + 1, py - 1));
-//    }
-//    if (py < map.GetLength(1) && py >= 0 && px + 1 < map.GetLength(0) && px + 1 >= 0 && map[px, py + 1] != "█")
-//    {
-//        result.Add(new Point(px - 1, py + 1));
-//    }
-//    if (py < map.GetLength(1) && py >= 0 && px - 1 < map.GetLength(0) && px - 1 >= 0 && map[px, py - 1] != "█")
-//    {
-//        result.Add(new Point(px, py + 1));
-//    }
-
-//    return result;
-//}
