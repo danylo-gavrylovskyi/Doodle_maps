@@ -30,19 +30,19 @@ var generator = new MapGenerator(new MapGeneratorOptions()
 {
     Height = 10,
     Width = 15,
-    //Seed = 3,
-    //AddTraffic = true,
-    //TrafficSeed = 1
+    Seed = 2,
+    AddTraffic = true,
+    TrafficSeed = 1
 });
 
 
 string[,] map = generator.Generate();
 var start = new Point(row: 0, column: 0);
-var goal = new Point(row: 2, column: 8);
+var goal = new Point(row: 6, column: 9);
 
-//new MapPrinter().Print(map, new List<Point>(), start, goal);
+new MapPrinter().Print(map, new List<Point>(), start, start);
 List<Point> path = BFS(start, goal);
-new MapPrinter().Print(map,path,start,goal);
+new MapPrinter().Print(map, path, start, goal);
 
 List<Point> BFS(Point start, Point goal)
 {
@@ -51,6 +51,7 @@ List<Point> BFS(Point start, Point goal)
     queue.Enqueue(start, 0);
     Point next = start;
     int priority;
+    float time = 0f;
 
     while (!IsEqual(next, goal) && queue.Count > 0)
     {
@@ -59,8 +60,11 @@ List<Point> BFS(Point start, Point goal)
         {
             if (!origins.TryGetValue(neighbour, out _))
             {
+                int num;
+                int.TryParse(map[neighbour.Column, neighbour.Row], out num);
                 origins.Add(neighbour, next);
-                queue.Enqueue(neighbour, priority + 1);
+                queue.Enqueue(neighbour, priority + num);
+                time += 1 / (60 - (num - 1) * 6f);
             }
         }
     }
@@ -73,11 +77,47 @@ List<Point> BFS(Point start, Point goal)
         path.Add(current);
         origins.TryGetValue(current, out current);
     }
-    
+
     path.Add(start);
     path.Reverse();
+    Console.WriteLine(time);
     return path;
 }
+
+//List<Point> BFS(Point start, Point goal)
+//{
+//    Dictionary<Point, Point> origins = new Dictionary<Point, Point>();
+//    var queue = new PriorityQueue<Point, int>();
+//    queue.Enqueue(start, 0);
+//    Point next = start;
+//    int priority;
+
+//    while (!IsEqual(next, goal) && queue.Count > 0)
+//    {
+//        var is_ok = queue.TryDequeue(out next, out priority);
+//        foreach (Point neighbour in GetNeighbours(next.Row, next.Column, map))
+//        {
+//            if (!origins.TryGetValue(neighbour, out _))
+//            {
+//                origins.Add(neighbour, next);
+//                queue.Enqueue(neighbour, priority + 1);
+//            }
+//        }
+//    }
+
+//    List<Point> path = new List<Point>();
+//    Point current = goal;
+
+//    while (!IsEqual(current, start))
+//    {
+//        path.Add(current);
+//        origins.TryGetValue(current, out current);
+//    }
+
+//    path.Add(start);
+//    path.Reverse();
+//    return path;
+//}
 
 List<Point> GetNeighbours(int row, int column, string[,] maze)
 {

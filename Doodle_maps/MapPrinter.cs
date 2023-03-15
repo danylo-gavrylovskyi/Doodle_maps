@@ -1,4 +1,4 @@
-namespace Kse.Algorithms.Samples
+﻿namespace Kse.Algorithms.Samples
 {
     using System;
     using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace Kse.Algorithms.Samples
                     {
                         Console.Write("A");
                     }
-                    else if (goal.Equals(new Point(row: row, column: column)))
+                    else if (goal.Equals(new Point(row: row, column: column)) && maze[goal.Column, goal.Row] != "█")
                     {
                         Console.Write("B");
                     }
@@ -30,7 +30,6 @@ namespace Kse.Algorithms.Samples
                         Console.Write(maze[column, row]);
                     }
                 }
-
                 Console.WriteLine();
             }
 
