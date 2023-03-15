@@ -5,26 +5,23 @@ namespace Kse.Algorithms.Samples
 
     public class MapPrinter
     {
-        public void Print(string[,] maze, List<Point> path)
+        public void Print(string[,] maze, List<Point> path, Point start, Point goal)
         {
             PrintTopLine();
 
-            var start = path[0];
-            var goal = path[^1];
-
             for (var row = 0; row < maze.GetLength(1); row++)
             {
-                Console.Write($"{row}\t");
                 for (var column = 0; column < maze.GetLength(0); column++)
                 {
                     if (start.Equals(new Point(row: row, column: column)))
                     {
                         Console.Write("A");
                     }
-                    else if(goal.Equals(new Point(row: row, column: column)))
+                    else if (goal.Equals(new Point(row: row, column: column)))
                     {
                         Console.Write("B");
-                    }else if(path.Contains(new Point(row: row, column: column)))
+                    }
+                    else if (path.Contains(new Point(row: row, column: column)))
                     {
                         Console.Write(".");
                     }
